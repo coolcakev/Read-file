@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Read_file
 {
-    public class City
+    public class TransformType
     {
         public string Name { get; set; }
-        public IEnumerable<Service> Services { get; set; }
+        public List<Service> Services { get; set; }= new List<Service>(){ };
         public decimal Total { get; set; }
 
     }
@@ -17,7 +17,7 @@ namespace Read_file
     public class Service
     {
         public string Name { get; set; }
-        public IEnumerable<Payer> Payers { get; set; }
+        public List<Payer> Payers { get; set; } = new List<Payer>() { };
         public decimal Total { get; set; }
     }
 

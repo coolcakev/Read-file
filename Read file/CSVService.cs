@@ -12,10 +12,13 @@ namespace Read_file
 {
     public class CSVService : IFileService
     {
+        private readonly TransformTypeService _transformTypeService;
+
         public Meta Meta { get; }
         public CSVService()
         {
             Meta = new Meta();
+            _transformTypeService=new TransformTypeService();
         }
 
         public PaymentTransaction CreatePaymentTransaction(object obj)
@@ -124,15 +127,19 @@ namespace Read_file
             return paymentTransactions;
         }
 
-        public List<PaymentTransaction> ReadFiles(IEnumerable<string> files)
+        public Dictionary<string, List<TransformType>> ReadFiles(IEnumerable<string> files)
         {
-            var paymentTransactions = new List<PaymentTransaction>();
+            var filesTransformTypes = new Dictionary<string, List<TransformType>>();
+
             foreach (var file in files)
             {
-                var partialPaymentTransactions = Read(file);
-                paymentTransactions.AddRange(partialPaymentTransactions);
+                var paymentTransactions = Read(file);
+
+                var tranformTypes = _transformTypeService.CreateTransformType(paymentTransactions);
+                
+                filesTransformTypes.Add(file, tranformTypes);
             }
-            return paymentTransactions;
+            return filesTransformTypes;
         }
     }
 }

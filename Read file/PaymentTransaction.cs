@@ -15,6 +15,17 @@ namespace Read_file
         public DateTime Date { get; set; }
         public long AccountNumber { get; set; }
         public string Service { get; set; }
+
+        public string TakeCity()
+        {
+            var city = Address.Split(",").FirstOrDefault();
+            if (city == null)
+            {
+                return string.Empty;
+            }
+            city = city.Trim();
+            return city;
+        }
     }
 
 }

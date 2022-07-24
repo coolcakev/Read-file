@@ -8,7 +8,8 @@ namespace Read_file
 {
     public enum CachType
     {
-        Configuration
+        Configuration,
+        CountFiles,
     }
 
 }

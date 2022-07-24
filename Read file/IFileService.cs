@@ -10,7 +10,7 @@ namespace Read_file
     {  
         Meta Meta { get; }
         IEnumerable<PaymentTransaction> Read(string file);
-        List<PaymentTransaction> ReadFiles(IEnumerable<string> files);
+        Dictionary<string, List<TransformType>> ReadFiles(IEnumerable<string> files);
         PaymentTransaction CreatePaymentTransaction(object obj);
     }
 }
