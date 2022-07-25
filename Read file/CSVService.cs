@@ -132,7 +132,7 @@ namespace Read_file
             var filesTransformTypes = new Dictionary<string, List<TransformType>>();
 
             foreach (var file in files)
-            {
+            {                             
                 var paymentTransactions = Read(file);
 
                 var tranformTypes = _transformTypeService.CreateTransformType(paymentTransactions);

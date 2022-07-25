@@ -10,6 +10,7 @@ namespace Read_file
     {
         Configuration,
         CountFiles,
+        ReadFile,
     }
 
 }
